@@ -1,7 +1,10 @@
+# Run this python script continuously on a computer connected to arduino via usb
 import serial
 import psycopg2
 
+# Same port that arduino opens for serial 
 SERIAL_PORT = 9600
+# path to arduino
 SERIAL_PATH = "/dev/cu.usbmodem144201"
 
 ser = serial.Serial(SERIAL_PATH, SERIAL_PORT)
