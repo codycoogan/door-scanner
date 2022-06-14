@@ -62,8 +62,7 @@ void stateChanged(bool plugged, const char* message) {
   Serial.println(plugged ? "CONNECTED" : "DISCONNECTED");
 }
 
-// Notifies when a card was read.
-// Instead of a message, the seconds parameter can be anything you want -- Whatever you specify on `wiegand.onReceive()`
+// Notifies when a card was read and prints to serial monitor for python script to read
 void receivedData(uint8_t* data, uint8_t bits, const char* message) {
   //  Serial.print(message);
   //  Serial.print(bits);
