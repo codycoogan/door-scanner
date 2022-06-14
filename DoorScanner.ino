@@ -1,8 +1,7 @@
-
+// Run on arduino with pin 4 connected to relay that will unlock door
 #include <Wiegand.h>
 
 // These are the pins connected to the Wiegand D0 and D1 signals.
-// Ensure your board supports external Interruptions on these pins
 #define PIN_D0 2
 #define PIN_D1 3
 
@@ -12,7 +11,6 @@ char openSignal;
 
 
 void setup() {
-  // CHANGE FOR OTHER DOOR 
   Serial.begin(115200);
   pinMode(4,OUTPUT);
 
@@ -38,7 +36,7 @@ void loop() {
   interrupts();
   //  delay(10)
 
-  // Check if signal to open door
+  // Check for signal to open door
   if (Serial.available() > 0) {
     // read the incoming byte:
     openSignal = Serial.read();
@@ -59,7 +57,6 @@ void pinStateChanged() {
 }
 
 // Notifies when a reader has been connected or disconnected.
-// Instead of a message, the seconds parameter can be anything you want -- Whatever you specify on `wiegand.onStateChange()`
 void stateChanged(bool plugged, const char* message) {
   Serial.print(message);
   Serial.println(plugged ? "CONNECTED" : "DISCONNECTED");
